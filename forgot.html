@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>نسيت كلمة المرور - متجر التطبيقات</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="all-css.css" />
+</head>
+<body>
+  <div class="auth-box">
+    <div class="logo">متجر التطبيقات</div>
+    <div class="auth-header">استعادة كلمة المرور</div>
+    <div class="auth-body">
+      <form id="forgotForm">
+        <div class="form-group">
+          <label>البريد الإلكتروني</label>
+          <input type="email" id="email" required placeholder="أدخل بريدك الإلكتروني" />
+        </div>
+        <button type="submit" class="btn">استعادة كلمة المرور</button>
+      </form>
+      <div id="result" class="result"></div>
+    </div>
+    <div class="auth-footer">
+      <a href="login.html">العودة إلى تسجيل الدخول</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('forgotForm').onsubmit = (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      const user = users.find(u => u.email === email);
+
+      const result = document.getElementById('result');
+
+      if (user) {
+        result.style.display = 'block';
+        result.style.background = '#e8f5e9';
+        result.style.color = '#2e7d32';
+        result.innerHTML = `
+          <p>تم العثور على حسابك!</p>
+          <p><strong>الاسم:</strong> ${user.name}</p>
+          <p><strong>كلمة المرور:</strong> <span style="font-family: monospace; background: #fff; padding: 2px 6px; border-radius: 4px;">${user.password}</span></p>
+          <p>احفظها جيدًا أو غيّرها لاحقًا.</p>
+        `;
+      } else {
+        result.style.display = 'block';
+        result.style.background = '#ffebee';
+        result.style.color = '#c62828';
+        result.innerHTML = 'لا يوجد حساب بهذا البريد الإلكتروني!';
+      }
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>رفع تطبيق — المتجر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/all-css.css" />
+    <link rel="stylesheet" href="css/upload.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body class="dark-theme">
+    <div class="top-bar">
+        <div class="logo-main">المتجر</div>
+        <div class="top-actions">
+            <a href="developer.html" class="menu-link">قسم المطورين</a>
+            <a href="index.html" class="menu-link">الرئيسية</a>
+        </div>
+    </div>
+
+    <main class="container upload-container">
+        <h1 class="section-title">رفع تطبيق جديد</h1>
+
+        <form id="uploadForm" class="upload-form" autocomplete="off">
+            <div class="form-row">
+                <label>اسم التطبيق</label>
+                <input id="name" name="name" type="text" required placeholder="اسم التطبيق"/>
+            </div>
+
+            <div class="form-row">
+                <label>اسم المطوّر</label>
+                <input id="dev" name="dev" type="text" required placeholder="اسمك أو شركتك"/>
+            </div>
+
+            <div class="form-row">
+                <label>وصف مختصر</label>
+                <textarea id="desc" name="desc" rows="4" required placeholder="وصف التطبيق"></textarea>
+            </div>
+
+            <div class="form-row two-cols">
+                <div>
+                    <label>فئة</label>
+                    <input id="category" name="category" type="text" placeholder="ألعاب، أدوات، ترفيه..." />
+                </div>
+                <div>
+                    <label>تقييم مبدئي (0-5)</label>
+                    <input id="rating" name="rating" type="number" min="0" max="5" step="0.1" value="3" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label>أيقونة التطبيق (رابط الصورة)</label>
+                <input id="icon" name="icon" type="url" required placeholder="https://example.com/icon.png"/>
+            </div>
+
+            <div class="form-row">
+                <label>صور من التطبيق (روابط — كل رابط في سطر)</label>
+                <textarea id="screenshots" name="screenshots" rows="4" placeholder="https://example.com/screenshot1.png&#10;https://example.com/screenshot2.png&#10;https://example.com/screenshot3.png"></textarea>
+            </div>
+
+            <div class="form-row">
+                <label>رابط تحميل التطبيق</label>
+                <input id="downloadLink" name="downloadLink" type="url" required placeholder="https://example.com/app.apk"/>
+            </div>
+
+            <div class="form-row">
+                <div class="progress" id="uploadProgress" style="display:none;">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <button type="submit" id="submitBtn" class="glow-on-hover">رفع التطبيق</button>
+                <button type="button" id="resetBtn" class="ghost">إعادة ضبط</button>
+            </div>
+
+            <div id="msg" class="upload-msg" role="status" aria-live="polite"></div>
+        </form>
+    </main>
+
+    <script type="module" src="scripts/upload.js"></script>
+</body>
+</html>

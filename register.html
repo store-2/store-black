@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>إنشاء حساب - متجر التطبيقات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="all-css.css" />
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="logo">
+                <i class="fas fa-store"></i>
+                متجر التطبيقات
+            </div>
+            <div class="auth-header">إنشاء حساب</div>
+            <div class="auth-body">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label>البريد الإلكتروني</label>
+                        <div class="input-with-icon">
+                            <input type="email" id="email" required placeholder="أدخل بريدك الإلكتروني" />
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>كلمة المرور</label>
+                        <div class="input-with-icon">
+                            <input type="password" id="password" required placeholder="أدخل كلمة المرور" />
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">إنشاء حساب</button>
+                </form>
+                <div class="auth-footer">
+                    لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- إضافة مكتبة Firebase -->
+    <script type="module">
+        import app from './scripts/my-firebase-app/src/firebase-config.js';
+        import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+        const auth = getAuth(app);
+
+        // تسجيل المستخدم
+        document.getElementById('registerForm').onsubmit = (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // تسجيل الدخول الناجح
+                    const user = userCredential.user;
+                    showSuccessMessage('تم إنشاء الحساب بنجاح!');
+                    setTimeout(() => window.location.href = 'login.html', 1500);
+                })
+                .catch((error) => {
+                    showErrorMessage(error.message);
+                });
+        };
+
+        // دوال مساعدة لعرض الرسائل
+        function showSuccessMessage(message) {
+            const alert = document.createElement('div');
+            alert.className = 'alert success';
+            alert.textContent = message;
+            document.body.appendChild(alert);
+            setTimeout(() => alert.remove(), 3000);
+        }
+
+        function showErrorMessage(message) {
+            const alert = document.createElement('div');
+            alert.className = 'alert error';
+            alert.textContent = message;
+            document.body.appendChild(alert);
+            setTimeout(() => alert.remove(), 3000);
+        }
+    </script>
+</body>
+</html>
