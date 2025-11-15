@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>مطور المتجر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="all-css.css" />
+    <link rel="stylesheet" href="developer.css" />
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="ابحث عن مطورين..." id="searchInput"/>
+        </div>
+        <i class="fas fa-bars" id="menuToggle"></i>
+        <div class="profile"></div>
+    </div>
+
+    <!-- القائمة الجانبية -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="https://via.placeholder.com/50" alt="شعار" class="logo">
+            <h3>المتجر</h3>
+        </div>
+        <div class="sidebar-menu">
+            <a href="index.html" class="menu-item">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+            <a href="games.html" class="menu-item">
+                <i class="fas fa-gamepad"></i>
+                <span>الألعاب</span>
+            </a>
+            <a href="apps.html" class="menu-item active">
+                <i class="fas fa-mobile-alt"></i>
+                <span>التطبيقات</span>
+            </a>
+            <a href="developer.html" class="menu-item">
+                <i class="fas fa-user"></i>
+                <span>مطور المتجر</span>
+            </a>
+            <a href="search.html" class="menu-item">
+                <i class="fas fa-search"></i>
+                <span>بحث</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="container" id="mainContent">
+        <h1>مرحبًا بكم في قسم مطور المتجر</h1>
+        <p>هنا يمكنك العثور على معلومات حول المطورين والتطبيقات التي قاموا بإنشائها.</p>
+        <div class="developer-list" id="developerList"></div>
+    </div>
+
+    <script src="scripts/developer.js"></script>
+</body>
+</html>
